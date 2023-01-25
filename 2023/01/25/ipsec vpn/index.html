@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IPSec VPN | wl的分享站</title><meta name="keywords" content="硬件 学习 折腾 运维"><meta name="author" content="wl"><meta name="copyright" content="wl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. IPSec VPN 是什么VPN 技术一般指虚拟专用网络。 虚拟专用网络(VPN)的功能是：在公用网络上建立专用网络，进行加密通讯。在企业网络中有广泛应用。VPN 网关通过对数据包的加密和数据包目标地址的转换实现远程访问。 PPTP VPN、L2TP&#x2F;IPSec VPN、 Open VPN（SSL VPN）是最常用的三种 VPN 形式。 IPSec 是为实现 VPN 功能而最普遍使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPSec VPN">
+<meta property="og:url" content="http://example.com/2023/01/25/ipsec%20vpn/index.html">
+<meta property="og:site_name" content="wl的分享站">
+<meta property="og:description" content="1. IPSec VPN 是什么VPN 技术一般指虚拟专用网络。 虚拟专用网络(VPN)的功能是：在公用网络上建立专用网络，进行加密通讯。在企业网络中有广泛应用。VPN 网关通过对数据包的加密和数据包目标地址的转换实现远程访问。 PPTP VPN、L2TP&#x2F;IPSec VPN、 Open VPN（SSL VPN）是最常用的三种 VPN 形式。 IPSec 是为实现 VPN 功能而最普遍使">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/100363203_p0.png">
+<meta property="article:published_time" content="2023-01-25T15:18:37.227Z">
+<meta property="article:modified_time" content="2023-01-25T15:18:37.227Z">
+<meta property="article:author" content="wl">
+<meta property="article:tag" content="硬件 学习 折腾 运维">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/100363203_p0.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/01/25/ipsec%20vpn/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":100},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-25 23:18:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><script src="https://blog.wlpoint.cn/live2d-widget-master/autoload.js"></script><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><span id="fps"></span><link rel="stylesheet" href="/css/cat.css"><div id="myscoll"></div><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/87033410_p0_master1200(1).png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/82466897_p0.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">wl的分享站</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">IPSec VPN</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-25T15:18:37.227Z" title="发表于 2023-01-25 23:18:37">2023-01-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-25T15:18:37.227Z" title="更新于 2023-01-25 23:18:37">2023-01-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B/">网络工程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="IPSec VPN"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-IPSec-VPN-是什么"><a href="#1-IPSec-VPN-是什么" class="headerlink" title="1. IPSec VPN 是什么"></a>1. IPSec VPN 是什么</h1><p>VPN 技术一般指虚拟专用网络。 虚拟专用网络(VPN)的功能是：在公用网络上建立专用网络，进行加密通讯。在企业网络中有广泛应用。VPN 网关通过对数据包的加密和数据包目标地址的转换实现远程访问。 PPTP VPN、L2TP&#x2F;IPSec VPN、 Open VPN（SSL VPN）是最常用的三种 VPN 形式。</p>
+<p>IPSec 是为实现 VPN 功能而最普遍使用的协议。 IPSec 不是一个单独的协议，它给出了应用于 IP 层上网络数据安全的一整套体系结构。该体系结构包括认证头协议(Authentication Header，简称为 AH )、封装安全负载协议(Encapsulating Security Payload，简称为 ESP)、密钥管理协议( Internet Key Exchange，简称为 IKE）和用于网络认证及加密的一些算法等。 IPSec规定了如何在对等体之间选择安全协议、确定安全算法和密钥交换，向上提供了访问控制、数据源认证、数据加密等网络安全服务。</p>
+<p>IPSec VPN 是指采用 IPSec 协议来实现远程接入的一种 VPN 技术。 StoneOS 通过“基于策略的 VPN”和“基于路由的 VPN”两种方式把配置好的 VPN 隧道应用到 Hillstone 设备上，实现流量的加密解密安全传输。</p>
+<p>基于策略的 VPN：将配置成功的 VPN 隧道名称引用到策略规则中，使符合条件的流量通过指定的 VPN 隧道进行传输。</p>
+<p>基于路由的 VPN： 将配置成功的 VPN 隧道与隧道接口绑定；配置静态路由时，将隧道接口指定为下一跳路由。</p>
+<h1 id="2-IPSec-VPN-框架"><a href="#2-IPSec-VPN-框架" class="headerlink" title="2. IPSec VPN 框架"></a>2. IPSec VPN 框架</h1><p><img src="https://upload-images.jianshu.io/upload_images/28003775-1335a3aa47b9a552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/479/format/webp" alt="img"></p>
+<h2 id="2-1-密钥交换部分"><a href="#2-1-密钥交换部分" class="headerlink" title="2.1 密钥交换部分"></a>2.1 密钥交换部分</h2><p><strong>密钥获得方法：</strong>手工密钥、协商密钥交换。</p>
+<p><strong>密钥交换两个阶段：</strong>第一阶段完成认证和对第二阶段保护套件的协商；第二阶段完成真正VPN 数据保护套件的协商。</p>
+<p><strong>密钥交换两种主要的交换模式：</strong>主模式和野蛮模式。</p>
+<h2 id="2-2-数据封装部分"><a href="#2-2-数据封装部分" class="headerlink" title="2.2 数据封装部分"></a>2.2 数据封装部分</h2><p><strong>两种协议：</strong> ESP 和 AH (StoneOS 单独支持 ESP 和 AH，但不支持 ESP+AH 组合使用)。</p>
+<p><strong>两种模式：</strong>封装模式和传输模式。</p>
+<p><strong>提供的安全：</strong>秘密性、完整性、防重放。</p>
+<h2 id="2-3-密钥交换协议-IKE"><a href="#2-3-密钥交换协议-IKE" class="headerlink" title="2.3 密钥交换协议(IKE)"></a>2.3 密钥交换协议(IKE)</h2><p>IPSec VPN 需要预先协商加密协议、散列函数、封装协议、封装模式和密钥有效期等内容，具体执行协商任务的协议叫做 IKE。 IKE 属于一种混合型协议，由 Internet 安全关联和密钥管理协议（ISAKMP）和两种密钥交换协议 OAKLEY 与 SKEME 组成。</p>
+<p>IKE 使用了两个阶段为 IPSec 进行密钥协商并建立安全联盟 SA：</p>
+<p>第一阶段，通信各方彼此间建立了一个已通过身份验证和安全保护的通道，此阶段的交换建立了一个 ISAKMP 安全联盟， 即 ISAKMP SA (也可称 IKE SA。安全关联（SA）是实体间的关系，它表示通信方如何使用安全服务进行安全通信。 IKE SA 就是 IKE 之间如何使用安全服务进行通信；IPSec SA 就是 IPSec 实体间如何使用安全服务进行通信）。</p>
+<p>第二阶段，用在第一阶段建立的安全通道为 IPSec 协商安全服务，即为 IPSec 协商具体的安全联盟，建立 IPSec SA，IPSec SA 用于最终的 IP 数据安全传输。</p>
+<h2 id="2-4-安全联盟-SA-及匹配方法"><a href="#2-4-安全联盟-SA-及匹配方法" class="headerlink" title="2.4 安全联盟 SA 及匹配方法"></a>2.4 安全联盟 SA 及匹配方法</h2><p>SA：IPSec 在两个端点之间提供安全通信， 两个端点被称为 IPSec ISAKMP 网关。安全联盟（简称为 SA）是 IPSec 的基础，也是 IPSec 的本质。 SA 是通信对等体间对某些要素的约定， 例如使用哪种协议、协议的操作模式、加密算法（DES、 3DES、 AES-128、AES-192 和 AES-256）、特定流中保护数据的共享密钥以及 SA 的生存周期等。</p>
+<p><strong>SA 匹配方法：</strong></p>
+<p><strong>Outbound(加密方向)：</strong>策略或者路由驱动。比如 policy 定义某一个流（源地址、目的地址和应用（协议、源端口、目的端口））进行 IPSec 加密。路由驱动，绑定 VPN 到 tunnel 接口，路由到该 tunnel 接口。</p>
+<p><strong>Inbound（解密方向）：</strong>目的地址+协议+SPI。实际时 flow，即六元组（源目 IP，源目端口，协议，入安全域）的匹配，其中源端口和目的端口共同组成了 SPI。</p>
+<h1 id="3-IPSec-VPN-特性"><a href="#3-IPSec-VPN-特性" class="headerlink" title="3. IPSec VPN 特性"></a>3. IPSec VPN 特性</h1><h2 id="3-1-两种协商模式"><a href="#3-1-两种协商模式" class="headerlink" title="3.1 两种协商模式"></a>3.1 两种协商模式</h2><p>第一阶段主模式需要 3 次共 6 个报文的交换。第一次交换用来协商 p1 提议；第二次交换用于生成给后续协商报文和数据报文加密用的加密材料；第三次交换用来验证对方身份，其中包含 ID 和认证载荷。 1、 2、 3、 4 个报文为明文传输， 5、 6 个报文使用 3、 4 报文协商出的加密材料进行加密。</p>
+<p>第一阶段野蛮模式需要总共 3 个报文的交换。第一个报文就将 p1 提议、本端 ID 等发送给对端，响应者发送的第二个报文包含选定的 p1 提议、本端 ID 和认证载荷等发给发起者，最后发起者会将自己的认证载荷作为第三个报文发出。野蛮模式三个报文都为明文传输。</p>
+<p>主模式的身份认证是在加密的第 5、 6 个报文完成，因此主模式比野蛮模式更加安全；野蛮模式交互只需要 3 个报文，比主模式更快；主模式的协商能力强于野蛮模式。</p>
+<h2 id="3-2-两种封装模式"><a href="#3-2-两种封装模式" class="headerlink" title="3.2 两种封装模式"></a>3.2 两种封装模式</h2><h3 id="3-2-1-传输模式"><a href="#3-2-1-传输模式" class="headerlink" title="3.2.1 传输模式"></a>3.2.1 传输模式</h3><p>传输模式（Transport Mode）是 IPSec 的默认模式,又称端到端（End-to-End）模式，它只适用于 PC 到 PC 的场景（原因： 1. IP 地址无法在公网路由， 2. 由于目的地址不是响应方网关，即使到达网关也无法解密） 。</p>
+<p>传输模式下只对 IP 负载进行保护，可能是 TCP&#x2F;UDP&#x2F;ICMP 协议，也可能是 AH&#x2F;ESP 协议。传输模式只为上层协议提供安全保护，在此种模式下，参与通信的双方主机都必须安装 IPSec协议，而且它不能隐藏主机的 IP 地址。启用 IPSec 传输模式后，IPSec 会在传输层包的前面增加 AH&#x2F;ESP 头部或同时增加两种头部，构成一个 AH&#x2F;ESP 数据包，然后添加 IP 头部组成 IP包。在接收方， 首先处理的是 IP，然后再做 IPSec 处理，最后再将载荷数据交给上层协议。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/28003775-f2cff1d6bc4adce3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/751/format/webp" alt="img"></p>
+<h3 id="3-2-2-隧道模式"><a href="#3-2-2-隧道模式" class="headerlink" title="3.2.2 隧道模式"></a>3.2.2 隧道模式</h3><p>隧道模式（Tunnel Mode）使用在两台网关之间，站点到站点（Site-to-Site）的通信。参与通信的两个网关实际是为了两个以其为边界的网络中的设备提供安全通信的服务。</p>
+<p>隧道模式为整个 IP 包提供保护，为 IP 协议本身而不只是上层协议提供安全保护。通常情况下只要使用 IPSec 的双方有一方是安全网关，就必须使用隧道模式。大部分 VPN 都使用隧道模式，因为它不仅对整个原始报文加密，还对通信的源地址和目的地址进行部分和全部加密，只需要在安全网关，而不需要在内部主机上安装 VPN 软件，期间所有加密和解密以及协商操作均由前者负责完成。</p>
+<p>启用IPSec隧道模式后， IPSec将原始IP看作一个整体作为要保护的内容，前面加上AH&#x2F;ESP头部，再加上新 IP 头部组成新 IP 包。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/28003775-b1abc002d8b85d06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/748/format/webp" alt="img"></p>
+<h2 id="3-3-两种认证方式"><a href="#3-3-两种认证方式" class="headerlink" title="3.3 两种认证方式"></a>3.3 两种认证方式</h2><p><strong>预共享密钥认证：</strong>生成加密材料时会使用预共享密钥;认证载荷是对加密材料的 hash 运算值。 通常情况下，确定预共享密钥需要根据对端 IP，如果对端的 IP 是动态则无法找到正确的预共享密钥。Hillstone 的设备是通过 peer 来对应预共享密钥，只要找到了正确的 peer 也就能找到正确的预共享密钥。并且 hillstone 设备对于查找 peer 有一套自己的逻辑，因此 hillstone 的设备在对端为动态的情况下也能使用主模式。</p>
+<p><strong>证书认证：</strong>生成加密材料时会使用 DH 交换生成的共享秘密；认证载荷包括签名载荷和证书载荷。对于 hillstone 的设备来说，签名载荷是用对应信任域中的私钥，对发送的消息中的一部分进行加密。证书载荷是对应信任域中的本地证书。</p>
+<h2 id="3-4-NAT-穿越"><a href="#3-4-NAT-穿越" class="headerlink" title="3.4 NAT 穿越"></a>3.4 NAT 穿越</h2><p><strong>AH 协议不支持 NAT 穿越， ESP 协议支持 NAT 穿越。</strong></p>
+<p><strong>原因：</strong> NAT 网关会修改报文的 IP 和 port，但 IPSec 中的 AH 协议是对整个报文进行完整性校验的，不允许 NAT 设备对报文进行任何修改操作。而 ESP 协议只验证 IP 负载部分，不对 IP 头部进行验证，因此，使用 AH 协议封装保护的 IPSec 流量是无法和 NAT 共存的。</p>
+<p>封装协议协议号是否提供保密性是否提供完整性是否提供源认证是否验证IP头部</p>
+<p>ESP50是是是只验证IP负载部分，不对IP头部进行验证</p>
+<p>AH51否是是除了要验证IP负载部分，还要验证IP头部的部分字段</p>
+<p>正常的 isakmp 报文是通过 UDP 的 500 端口发送，开启 NAT 穿越后， isakmp 协商报文（主模式的 1、 2、 3、 4 个报文，野蛮模式 1、 2 个报文）会进行 nat 探测，一旦发现中间存在 nat设备，isakmp(主模式第五个以及后面的报文，野蛮模式第 3 个以及后面的报文）会将端口改为 UDP 的 4500，并在 UDP 报头和 isakmp 报头之间插入一个 non esp marker 用来和 UDP封装的 esp 报文进行区分， 之后的 esp 数据报文会在 new IP 头和 esp 头之间插入一个 UDP报头（端口号为 4500），这样就可以支持中间设备的 PAT。</p>
+<h1 id="a-IPSec基础介绍"><a href="#a-IPSec基础介绍" class="headerlink" title="a. IPSec基础介绍"></a>a. IPSec基础介绍</h1><p><strong>IPSec定义：</strong>（英语：Internet Protocol Security，缩写为IPsec），是一个协议包，通过对IP协议的分组进行加密和认证来保护IP协议的网络传输协议族（一些相互关联的协议的集合）。</p>
+<h2 id="1-IPSec对等体"><a href="#1-IPSec对等体" class="headerlink" title="1. IPSec对等体"></a>1. IPSec对等体</h2><p>IPSec 用于在两个端点之间提供安全的 IP 通信，通信的两个端点被称为 IPSec 对等体。</p>
+<h2 id="2-安全联盟"><a href="#2-安全联盟" class="headerlink" title="2. 安全联盟"></a>2. 安全联盟</h2><p>SA（Security Association）安全联盟是要建立IPSec隧道的通信双方对隧道参数的约定，包括隧道两端的IP地址、隧道采用的验证方式、验证算法、验证密钥、加密算法、加密密钥、共享密钥以及生存周期等一系列参数。</p>
+<p>SA 是单向的，在两个对等体之间的双向通信，至少需要两个 SA。SA 由一个三元组来唯一标识，这个三元组包括安全参数索引 SPI（Security Parameter Index）、目的 IP 地址、安全协议名（AH 或 ESP）。</p>
+<h2 id="3-协商方式"><a href="#3-协商方式" class="headerlink" title="3. 协商方式"></a>3. 协商方式</h2><p>建立 SA 的方式有以下两种：</p>
+<p>手工方式（manual）：建立安全联盟比较复杂，安全联盟所需的全部信息都必须手工配置。但优点是可以不依赖 IKE 而单独实现 IPSec 功能。</p>
+<p>IKE 动态协商（isakmp）方式：建立安全联盟相对简单些，只需要通信对等体间配置好 IKE协商参数，由 IKE 自动协商来创建和维护 SA。</p>
+<h2 id="4-IPSec封装模式"><a href="#4-IPSec封装模式" class="headerlink" title="4. IPSec封装模式"></a>4. IPSec封装模式</h2><p><img src="https://upload-images.jianshu.io/upload_images/28003775-818fc1ab9b82782d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/608/format/webp" alt="img"></p>
+<p><strong>隧道模式。</strong>在隧道模式下，AH 或 ESP 插在原始 IP 头之前，另外生成一个新 IP 头放到 AH或 ESP 之前。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/28003775-d949f90ce8cf5607.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/637/format/webp" alt="img"></p>
+<p><strong>传输模式。</strong>在传输模式下，AH 或 ESP 被插入到 IP 头之后但在传输层协议之前。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/28003775-fcca792f64559663.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/546/format/webp" alt="img"></p>
+<p>图注：传输模式示意图</p>
+<p>隧道模式生成新的包头安全性比传输模式高，但隧道模式比传输模式占用带宽更多。</p>
+<h2 id="5-IPSec使用的认证算法和加密算法"><a href="#5-IPSec使用的认证算法和加密算法" class="headerlink" title="5. IPSec使用的认证算法和加密算法"></a>5. IPSec使用的认证算法和加密算法</h2><p><strong>认证算法</strong></p>
+<p>MD5（Message Digest 5）：MD5 通过输入任意长度的消息，产生 128bit 的消息摘要。</p>
+<p>SHA-1（Secure Hash Algorithm）：SHA-1 通过输入长度小于 2 的 64 次方比特的消息，产生 160bit 的消息摘要。</p>
+<p>SHA-2：SHA-2 算法相对于 SHA-1 加密数据位数有所上升，安全性能要远远高于SHA-1。</p>
+<p><strong>加密算法</strong></p>
+<p>加密算法实现主要通过对称密钥系统，它使用相同的密钥对数据进行加密和解密。</p>
+<p>IPSec使用以下三种加密算法：</p>
+<p>DES：使用 56bit 的密钥对一个 64bit 的明文块进行加密。</p>
+<p>3DES：使用三个 56bit 的 DES 密钥（共 168bit 密钥）对明文进行加密。</p>
+<p>AES：使用 128bit、192bit 或 256bit 密钥长度的 AES 算法对明文进行加密。</p>
+<h2 id="6-通信保护协议"><a href="#6-通信保护协议" class="headerlink" title="6. 通信保护协议"></a>6. 通信保护协议</h2><p><strong>AH认证头协议：</strong></p>
+<p>协议号51。</p>
+<p>定义于RFC 2402。</p>
+<p>鉴别头AH：（不提供保密性，只对整个IP数据包提供保护）。</p>
+<p>无连接数据完整性：通过哈希函数产生的校验来保证。</p>
+<p>数据源认证：通过计算验证码时加入一个共享密钥来实现。</p>
+<p>抗重放服务：AH报头中的随机序列号可以防止重放攻击。</p>
+<p>可以用于隧道和传输两种模式中。</p>
+<p>使用MD5&#x2F;SHA-1。</p>
+<p>提供如下的功能：</p>
+<p>数据完整性；</p>
+<p>数据源认证；</p>
+<p>Anti-replay服务。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/28003775-8b1d0c23c1e81e32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/656/format/webp" alt="img"></p>
+<p><strong>ESP封装安全载荷协议：</strong></p>
+<p>协议号50。</p>
+<p>定义于RFC 2406。</p>
+<p>除提供 AH 认证头协议的所有功能之外，还有数据保密和有限的数据流保护，ESP 协议允许对 IP 报文净荷进行加密和认证、只加密或者只认证，ESP 没有对 IP头的内容进行保护。</p>
+<p>保密服务通过使用密码算法加密 IP 数据包的相关部分来实现。</p>
+<p>数据流保密由隧道模式下的保密服务提供。</p>
+<p>ESP通常使用DES、3DES、AES等加密算法实现数据加密，使用MD5或SHA1来实现数据完整性认证。</p>
+<p>AH认证头协议，无法在穿越NAT的时候使用，因为AH协议会对IP包头进行校验。ESP协议可以。</p>
+<p>可以用于隧道和传输两种模式中。</p>
+<p>提供如下的功能：</p>
+<p>数据完整性；</p>
+<p>数据保密性；</p>
+<p>数据源认证；</p>
+<p>Anti-replay服务。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/28003775-4a197bb5e5099b55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/655/format/webp" alt="img"></p>
+<h2 id="7-IPsec提供了两种安全机制：认证和加密"><a href="#7-IPsec提供了两种安全机制：认证和加密" class="headerlink" title="7. IPsec提供了两种安全机制：认证和加密"></a><strong>7. IPsec提供了两种安全机制：认证和加密</strong></h2><p>认证机制使 IP 通信的数据接收方能够确认数据发送方的真实身份以及数据在传输过程中是否遭篡改。</p>
+<p>加密机制通过对数据进行加密运算来保证数据的机密性，以防数据在传输过程中被窃听。</p>
+<h1 id="b-1-IPSecVPN协商过程"><a href="#b-1-IPSecVPN协商过程" class="headerlink" title="b.1 IPSecVPN协商过程"></a>b.1 IPSecVPN协商过程</h1><p><img src="https://upload-images.jianshu.io/upload_images/28003775-35eccdda5e63b90c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/845/format/webp" alt="img"></p>
+<h2 id="b-2-主模式与野蛮模式对比"><a href="#b-2-主模式与野蛮模式对比" class="headerlink" title="b.2 主模式与野蛮模式对比"></a>b.2 主模式与野蛮模式对比</h2><p>IKEv1建立IKESA的过程定义了主模式（Main Mode）和野蛮模式（Aggressive Mode）两种交换模式。</p>
+<p><strong>主模式</strong>包含三次双向交换，用到了六条信息：</p>
+<p>消息①和②用于协商算法；</p>
+<p>消息③和④用于密钥信息交换，DH算法；</p>
+<p>消息⑤和⑥用于身份和认证信息交换。</p>
+<p><strong>野蛮模式</strong>只用到三条信息：</p>
+<p>前两条消息①和②用于协商提议，消息③用于响应方认证发起方。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/28003775-429ae79abfc1c066.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/715/format/webp" alt="img"></p>
+<p>图注：主模式与野蛮模式报文对比 </p>
+<p>野蛮模式协商比主模式协商更快。主模式需要交互6个消息，<strong>野蛮模式只需要交互3个消息。</strong></p>
+<p>主模式协商比野蛮模式协商更严谨、更安全。因为主模式在5、6个消息中对ID信息进行了加密。<strong>而野蛮模式受到交换次数的限制</strong>，ID信息在1、2个消息中以明文的方式发送给对端。即主模式对对端身份进行了保护，而野蛮模式则没有。</p>
+<p>两种模式在确定预共享的方式不同。主模式只能基于IP地址来确定预共享密钥。而野蛮模式是基于ID信息（主机名和IP地址）来确定预共享密钥。</p>
+<h1 id="c-1-IPSecVPN协商过程-主模式"><a href="#c-1-IPSecVPN协商过程-主模式" class="headerlink" title="c.1 IPSecVPN协商过程(主模式)"></a>c.1 IPSecVPN协商过程(主模式)</h1><p>【第一阶段】</p>
+<p>（1）主模式包交换解析(第一组报文)</p>
+<p>第一阶段第一组报文1和2的主要任务：</p>
+<blockquote>
+<ul>
+<li>加密算法</li>
+<li>散列算法</li>
+<li>DH组</li>
+<li>认证方式</li>
+<li>密钥有效期</li>
+</ul>
+</blockquote>
+<p>完成以上内容的协商</p>
+<p>（2）主模式包交换解析(第二组报文)</p>
+<p>IKE Phase 1 (Main Mode): Sending Message 3 and 4两部分内容要互相交换：Key Exchange和Nonce Payload：</p>
+<p>Key exchange data是双方共同要告诉对方的。</p>
+<p>Nonce(随机产生非常大的数字)是双方接下来验证需要的原材料之一。第二组的主要任务就是要交换双方的共享信息，产生一个密钥。</p>
+<p>（3）主模式包交换解析(第三组报文)</p>
+<p>预共享密钥认证：</p>
+<p>IKE Phase 1(Main Mode): Sending Message 5</p>
+<p>把Hash_l通过SKEYID_e进加密发送</p>
+<p>IKE Phase 1 (Main Mode): Sending Message 6</p>
+<p>把Hash_R通过SKEYID_e进加密发送</p>
+<p>最后一组发送完毕后，使用SKEYID_e解密对方发送的数据，里面有原始数据ID_R和哈希值Hash_R，使用接收到的ID_R按照PRFE函数进行哈希，比较接收到的哈希值和自己产生的哈希值是否相等。</p>
+<p>Hash_R ? &#x3D; Self Hash_R</p>
+<p>相等即可建立ISAKMP SA，IKE第一阶段完成。</p>
+<p>【第二阶段】</p>
+<p>（1）第1个包：</p>
+<p>在IKE SA协商基础上形成新的KEY；</p>
+<p>封装方式：AH、ESP；</p>
+<p>加密方式：DES、3DES、AES…；</p>
+<p>完整性算法：MD5、SHA-1；</p>
+<p>IPSEC SA：默认1个小时；</p>
+<p>两端保护子网。</p>
+<p>（2）第2个包：包主要是接收端查看本地有没有一个IPSec SA策略与发起方的一样，如果有，并且认证成功，感兴趣流协商成功，那么接收端会把协商成功的IPSec SA策略发给发起端，同时也会把自己的认证KEY发给发启端来进行双向认证。</p>
+<p>（3）第3个包：包主要是发起端对接收端发来的第二个包进行确认，协商成功进行业务访问</p>
+<h2 id="c-2-IPSecVPN协商过程-野蛮模式"><a href="#c-2-IPSecVPN协商过程-野蛮模式" class="headerlink" title="c.2 IPSecVPN协商过程(野蛮模式)"></a>c.2 IPSecVPN协商过程(野蛮模式)</h2><p>野蛮模式同样包含三个步骤，但仅通过三个包进行传输，标示为aggressive 野蛮模式的三个包交换：</p>
+<p>第1个交互包发起方建议SA，发起DH交换；</p>
+<p>第2个交互包接收方接收SA；</p>
+<p>第3个交互包发起方认证接收方，野蛮模式前两个报文是明文，第三个报文是密文。</p>
+<h1 id="d-IPSecVPN高级设置"><a href="#d-IPSecVPN高级设置" class="headerlink" title="d. IPSecVPN高级设置"></a>d. IPSecVPN高级设置</h1><h3 id="d-1-IPSecVPN中NAT穿越-NAT-T"><a href="#d-1-IPSecVPN中NAT穿越-NAT-T" class="headerlink" title="d.1 IPSecVPN中NAT穿越(NAT-T)"></a>d.1 IPSecVPN中NAT穿越(NAT-T)</h3><p>在非NAT环境中，IPSec协商使用UDP 500端口进行协商。而VPN设备（私网出口地址)如果在NAT设备内部，NAT不会对ESP进行端口转换，此时需要NAT-T技术在ESP封装和外层IP报头之间插入8个字节的UDP报头，端口号为UDP 4500。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/28003775-14e364c4763a72d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/514/format/webp" alt="img"></p>
+<h3 id="d-2-IPSecVPN-Proxy-ID"><a href="#d-2-IPSecVPN-Proxy-ID" class="headerlink" title="d.2 IPSecVPN Proxy-ID"></a>d.2 IPSecVPN Proxy-ID</h3><p>Proxy ID（代理ID，即感兴趣流）用于在两个VPN端对端间交换策略，代表着需要获得安全服务的数据包，通常指两端内网地址，定义的地址必须对称。</p>
+<p>若无填写，采用策略模式则需要在创建策略时填写对称的地址，即本地的源地址子网与对端的目的地址子网相同。</p>
+<p>Proxy ID 常用于本端 Hillstone，对端第三方设备的场景。</p>
+<p>Proxy ID 错误配置是 VPN 建立最常见的错误。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">wl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/01/25/ipsec%20vpn/">http://example.com/2023/01/25/ipsec%20vpn/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">wl的分享站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/100363203_p0.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/01/25/%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/78468086_p0.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">青龙面板自动签到京豆</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/87033410_p0_master1200(1).png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">wl</div><div class="author-info__description">本站旨在分享生活、学习、工作中有趣的事物</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ktoucha" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-IPSec-VPN-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">1. IPSec VPN 是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-IPSec-VPN-%E6%A1%86%E6%9E%B6"><span class="toc-number">2.</span> <span class="toc-text">2. IPSec VPN 框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E9%83%A8%E5%88%86"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 密钥交换部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85%E9%83%A8%E5%88%86"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 数据封装部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE-IKE"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 密钥交换协议(IKE)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E5%AE%89%E5%85%A8%E8%81%94%E7%9B%9F-SA-%E5%8F%8A%E5%8C%B9%E9%85%8D%E6%96%B9%E6%B3%95"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 安全联盟 SA 及匹配方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-IPSec-VPN-%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">3. IPSec VPN 特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E4%B8%A4%E7%A7%8D%E5%8D%8F%E5%95%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 两种协商模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E4%B8%A4%E7%A7%8D%E5%B0%81%E8%A3%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 两种封装模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E4%BC%A0%E8%BE%93%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 传输模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E9%9A%A7%E9%81%93%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 隧道模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E4%B8%A4%E7%A7%8D%E8%AE%A4%E8%AF%81%E6%96%B9%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 两种认证方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-NAT-%E7%A9%BF%E8%B6%8A"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 NAT 穿越</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#a-IPSec%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.</span> <span class="toc-text">a. IPSec基础介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-IPSec%E5%AF%B9%E7%AD%89%E4%BD%93"><span class="toc-number">4.1.</span> <span class="toc-text">1. IPSec对等体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E5%85%A8%E8%81%94%E7%9B%9F"><span class="toc-number">4.2.</span> <span class="toc-text">2. 安全联盟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8D%8F%E5%95%86%E6%96%B9%E5%BC%8F"><span class="toc-number">4.3.</span> <span class="toc-text">3. 协商方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-IPSec%E5%B0%81%E8%A3%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.4.</span> <span class="toc-text">4. IPSec封装模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-IPSec%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AE%A4%E8%AF%81%E7%AE%97%E6%B3%95%E5%92%8C%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">4.5.</span> <span class="toc-text">5. IPSec使用的认证算法和加密算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%80%9A%E4%BF%A1%E4%BF%9D%E6%8A%A4%E5%8D%8F%E8%AE%AE"><span class="toc-number">4.6.</span> <span class="toc-text">6. 通信保护协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-IPsec%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%A4%E7%A7%8D%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%EF%BC%9A%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8A%A0%E5%AF%86"><span class="toc-number">4.7.</span> <span class="toc-text">7. IPsec提供了两种安全机制：认证和加密</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#b-1-IPSecVPN%E5%8D%8F%E5%95%86%E8%BF%87%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">b.1 IPSecVPN协商过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#b-2-%E4%B8%BB%E6%A8%A1%E5%BC%8F%E4%B8%8E%E9%87%8E%E8%9B%AE%E6%A8%A1%E5%BC%8F%E5%AF%B9%E6%AF%94"><span class="toc-number">5.1.</span> <span class="toc-text">b.2 主模式与野蛮模式对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#c-1-IPSecVPN%E5%8D%8F%E5%95%86%E8%BF%87%E7%A8%8B-%E4%B8%BB%E6%A8%A1%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">c.1 IPSecVPN协商过程(主模式)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#c-2-IPSecVPN%E5%8D%8F%E5%95%86%E8%BF%87%E7%A8%8B-%E9%87%8E%E8%9B%AE%E6%A8%A1%E5%BC%8F"><span class="toc-number">6.1.</span> <span class="toc-text">c.2 IPSecVPN协商过程(野蛮模式)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#d-IPSecVPN%E9%AB%98%E7%BA%A7%E8%AE%BE%E7%BD%AE"><span class="toc-number">7.</span> <span class="toc-text">d. IPSecVPN高级设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#d-1-IPSecVPN%E4%B8%ADNAT%E7%A9%BF%E8%B6%8A-NAT-T"><span class="toc-number">7.0.1.</span> <span class="toc-text">d.1 IPSecVPN中NAT穿越(NAT-T)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d-2-IPSecVPN-Proxy-ID"><span class="toc-number">7.0.2.</span> <span class="toc-text">d.2 IPSecVPN Proxy-ID</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/01/25/ipsec%20vpn/" title="IPSec VPN"><img src="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/100363203_p0.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="IPSec VPN"/></a><div class="content"><a class="title" href="/2023/01/25/ipsec%20vpn/" title="IPSec VPN">IPSec VPN</a><time datetime="2023-01-25T15:18:37.227Z" title="发表于 2023-01-25 23:18:37">2023-01-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/25/%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/" title="青龙面板自动签到京豆"><img src="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/78468086_p0.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="青龙面板自动签到京豆"/></a><div class="content"><a class="title" href="/2023/01/25/%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF/" title="青龙面板自动签到京豆">青龙面板自动签到京豆</a><time datetime="2023-01-25T15:13:48.710Z" title="发表于 2023-01-25 23:13:48">2023-01-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/25/chemex%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86/" title="部署Chemex资产管理系统"><img src="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/63134378_p0.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="部署Chemex资产管理系统"/></a><div class="content"><a class="title" href="/2023/01/25/chemex%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86/" title="部署Chemex资产管理系统">部署Chemex资产管理系统</a><time datetime="2023-01-25T15:05:03.719Z" title="发表于 2023-01-25 23:05:03">2023-01-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/25/%E6%B5%8B%E8%AF%952/" title="测试"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="测试"/></a><div class="content"><a class="title" href="/2023/01/25/%E6%B5%8B%E8%AF%952/" title="测试">测试</a><time datetime="2023-01-25T07:19:48.036Z" title="发表于 2023-01-25 15:19:48">2023-01-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By wl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script async src="/js/fps.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/78445866_p0.jpg);"> <a class="categoryBar-list-link" href="categories/杂谈教程/">杂谈教程</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">linux运维</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/42947917_p0.jpg);"> <a class="categoryBar-list-link" href="categories/网络工程/">网络工程</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">网络工程</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/01/25/ipsec vpn/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/100363203_p0.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-01-25</span><a class="blog-slider__title" href="2023/01/25/ipsec vpn/" alt="">IPSec VPN</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2023/01/25/ipsec vpn/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/01/25/青龙面板/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/78468086_p0.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-01-25</span><a class="blog-slider__title" href="2023/01/25/青龙面板/" alt="">青龙面板自动签到京豆</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2023/01/25/青龙面板/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/01/25/chemex资产管理/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/ktoucha/blogimage@main/img/63134378_p0.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-01-25</span><a class="blog-slider__title" href="2023/01/25/chemex资产管理/" alt="">部署Chemex资产管理系统</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2023/01/25/chemex资产管理/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '1s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '2');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>
