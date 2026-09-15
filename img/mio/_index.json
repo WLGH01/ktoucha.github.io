@@ -1,556 +1,642 @@
 {
-  "character": "mio",
-  "character_cn": "绯月澪",
   "count": 106,
-  "naming": "<角色>_<分类>_<地点>_<关键特征>.png",
-  "categories": {
-    "toy": [
-      {
-        "file": "mio_toy_apartment_machine_bed.png",
-        "label": "公寓炮机",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_toy_convstore_egg_shelf.png",
-        "label": "便利店跳蛋",
-        "place": "convstore"
-      },
-      {
-        "file": "mio_toy_mall_egg_fitting.png",
-        "label": "试衣间跳蛋",
-        "place": "mall"
-      },
-      {
-        "file": "mio_toy_metro_egg_seat.png",
-        "label": "地铁跳蛋",
-        "place": "metro"
-      },
-      {
-        "file": "mio_toy_park_egg_bench.png",
-        "label": "公园长椅跳蛋",
-        "place": "park"
-      },
-      {
-        "file": "mio_toy_pool_machine_edge.png",
-        "label": "泳池边炮机",
-        "place": "pool"
-      },
-      {
-        "file": "mio_toy_rooftop_machine_stand.png",
-        "label": "天台炮机",
-        "place": "rooftop"
-      },
-      {
-        "file": "mio_toy_station_egg_platform.png",
-        "label": "站台跳蛋",
-        "place": "station"
-      },
-      {
-        "file": "mio_toy_street_egg_walk.png",
-        "label": "街道跳蛋行走",
-        "place": "street"
-      },
-      {
-        "file": "mio_toy_street_egg_wall.png",
-        "label": "街道墙边跳蛋",
-        "place": "street"
-      },
-      {
-        "file": "mio_toy_university_egg_classroom.png",
-        "label": "教室跳蛋",
-        "place": "university"
-      }
-    ],
-    "group": [
-      {
-        "file": "mio_group_alley_three.png",
-        "label": "后巷三人",
-        "place": "alley"
-      },
-      {
-        "file": "mio_group_apartment_double.png",
-        "label": "公寓双人",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_group_apartment_four.png",
-        "label": "公寓多人",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_group_metro_crowd.png",
-        "label": "地铁多人",
-        "place": "metro"
-      },
-      {
-        "file": "mio_group_pool_poolside.png",
-        "label": "泳池边多人",
-        "place": "pool"
-      },
-      {
-        "file": "mio_group_street_night_crowd.png",
-        "label": "夜晚街边多人",
-        "place": "street"
-      },
-      {
-        "file": "mio_group_warehouse_circle.png",
-        "label": "仓库围圈",
-        "place": "warehouse"
-      }
-    ],
-    "solo": [
-      {
-        "file": "mio_solo_apartment_bathroom.png",
-        "label": "浴室自慰",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_solo_apartment_bed_spread.png",
-        "label": "床上张腿",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_solo_apartment_mirror.png",
-        "label": "镜前自摸",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_solo_pool_water_touch.png",
-        "label": "泳池水中",
-        "place": "pool"
-      },
-      {
-        "file": "mio_solo_rooftop_night_touch.png",
-        "label": "天台自摸",
-        "place": "rooftop"
-      },
-      {
-        "file": "mio_solo_station_toilet.png",
-        "label": "车站洗手间",
-        "place": "station"
-      },
-      {
-        "file": "mio_solo_university_clubroom.png",
-        "label": "社团活动室",
-        "place": "university"
-      },
-      {
-        "file": "mio_solo_warehouse_crate.png",
-        "label": "仓库木箱上",
-        "place": "warehouse"
-      }
-    ],
-    "state": [
-      {
-        "file": "mio_state_alley_panic.png",
-        "label": "惊慌",
-        "place": "alley"
-      },
-      {
-        "file": "mio_state_alley_run.png",
-        "label": "奔跑",
-        "place": "alley"
-      },
-      {
-        "file": "mio_state_apartment_aroused.png",
-        "label": "兴奋",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_state_apartment_calm.png",
-        "label": "平静",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_state_apartment_casual.png",
-        "label": "便服",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_state_apartment_climax.png",
-        "label": "高潮失神",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_state_apartment_lingerie.png",
-        "label": "内衣",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_state_cafe_smile.png",
-        "label": "微笑",
-        "place": "cafe"
-      },
-      {
-        "file": "mio_state_convstore_crouch.png",
-        "label": "蹲下",
-        "place": "convstore"
-      },
-      {
-        "file": "mio_state_mall_walk.png",
-        "label": "行走",
-        "place": "mall"
-      },
-      {
-        "file": "mio_state_metro_nervous.png",
-        "label": "紧张",
-        "place": "metro"
-      },
-      {
-        "file": "mio_state_pool_swimsuit.png",
-        "label": "泳装",
-        "place": "pool"
-      },
-      {
-        "file": "mio_state_rooftop_defiant.png",
-        "label": "倔强",
-        "place": "rooftop"
-      },
-      {
-        "file": "mio_state_room_bound.png",
-        "label": "绳缚",
-        "place": "room"
-      },
-      {
-        "file": "mio_state_station_cuffs.png",
-        "label": "手铐",
-        "place": "station"
-      },
-      {
-        "file": "mio_state_street_coat.png",
-        "label": "风衣",
-        "place": "street"
-      },
-      {
-        "file": "mio_state_street_shy.png",
-        "label": "害羞",
-        "place": "street"
-      }
-    ],
-    "expose": [
-      {
-        "file": "mio_expose_alley_dogeza.png",
-        "label": "土下座",
-        "place": "alley"
-      },
-      {
-        "file": "mio_expose_alley_pee_spread.png",
-        "label": "开腿小便",
-        "place": "alley"
-      },
-      {
-        "file": "mio_expose_apartment_ass_wiggle.png",
-        "label": "扭动屁股",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_expose_apartment_doggy_masturbate.png",
-        "label": "狗爬式自慰",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_expose_apartment_futa.png",
-        "label": "扶他双性",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_expose_apartment_hip_sway.png",
-        "label": "摆动腰部",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_expose_apartment_lying_masturbate.png",
-        "label": "仰卧自慰",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_expose_apartment_wear_coat.png",
-        "label": "穿上外套",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_expose_convstore_three_leg.png",
-        "label": "三足自慰",
-        "place": "convstore"
-      },
-      {
-        "file": "mio_expose_mall_masturbate.png",
-        "label": "自慰",
-        "place": "mall"
-      },
-      {
-        "file": "mio_expose_metro_ahegao_vv.png",
-        "label": "阿嘿颜双V",
-        "place": "metro"
-      },
-      {
-        "file": "mio_expose_metro_clitoris.png",
-        "label": "玩弄阴蒂",
-        "place": "metro"
-      },
-      {
-        "file": "mio_expose_metro_topless.png",
-        "label": "露出上半身",
-        "place": "metro"
-      },
-      {
-        "file": "mio_expose_park_pee_stand.png",
-        "label": "站立小便",
-        "place": "park"
-      },
-      {
-        "file": "mio_expose_park_squat_armpit.png",
-        "label": "露腋蹲姿",
-        "place": "park"
-      },
-      {
-        "file": "mio_expose_pool_high_leg.png",
-        "label": "高叉姿势",
-        "place": "pool"
-      },
-      {
-        "file": "mio_expose_rooftop_i_split.png",
-        "label": "I字劈叉平衡",
-        "place": "rooftop"
-      },
-      {
-        "file": "mio_expose_rooftop_nude_full.png",
-        "label": "变成裸体",
-        "place": "rooftop"
-      },
-      {
-        "file": "mio_expose_street_cover_chest.png",
-        "label": "手遮胸",
-        "place": "street"
-      },
-      {
-        "file": "mio_expose_street_nipple.png",
-        "label": "玩弄乳头",
-        "place": "street"
-      },
-      {
-        "file": "mio_expose_street_show_ass.png",
-        "label": "露出屁股",
-        "place": "street"
-      },
-      {
-        "file": "mio_expose_street_takeoff_coat.png",
-        "label": "脱掉外套",
-        "place": "street"
-      },
-      {
-        "file": "mio_expose_street_walk_spread.png",
-        "label": "叉腿走路",
-        "place": "street"
-      }
-    ],
-    "story": [
-      {
-        "file": "mio_story_alley_struggle.png",
-        "label": "挣扎逃脱",
-        "place": "alley"
-      },
-      {
-        "file": "mio_story_apartment_goal.png",
-        "label": "粉丝达标",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_story_apartment_phone.png",
-        "label": "获得手机",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_story_metro_event.png",
-        "label": "地铁事件",
-        "place": "metro"
-      },
-      {
-        "file": "mio_story_room_bound.png",
-        "label": "被束缚",
-        "place": "room"
-      },
-      {
-        "file": "mio_story_station_travel.png",
-        "label": "解锁旅行",
-        "place": "station"
-      },
-      {
-        "file": "mio_story_street_firstlive.png",
-        "label": "首次直播",
-        "place": "street"
-      },
-      {
-        "file": "mio_story_taxi_event.png",
-        "label": "出租车事件",
-        "place": "taxi"
-      }
-    ],
-    "scene": [
-      {
-        "file": "mio_scene_apartment_morning.png",
-        "label": "公寓清晨",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_scene_convstore_front.png",
-        "label": "便利店门口",
-        "place": "convstore"
-      },
-      {
-        "file": "mio_scene_mall_walk.png",
-        "label": "商场中庭",
-        "place": "mall"
-      },
-      {
-        "file": "mio_scene_metro_seat.png",
-        "label": "地铁座位",
-        "place": "metro"
-      },
-      {
-        "file": "mio_scene_park_bench.png",
-        "label": "公园长椅",
-        "place": "park"
-      },
-      {
-        "file": "mio_scene_pool_edge.png",
-        "label": "泳池边",
-        "place": "pool"
-      },
-      {
-        "file": "mio_scene_rooftop_night.png",
-        "label": "夜晚天台",
-        "place": "rooftop"
-      },
-      {
-        "file": "mio_scene_station_wait.png",
-        "label": "月台等车",
-        "place": "station"
-      },
-      {
-        "file": "mio_scene_taxi_ride.png",
-        "label": "出租车后座",
-        "place": "taxi"
-      }
-    ],
-    "sex": [
-      {
-        "file": "mio_sex_alley_bound.png",
-        "label": "绳缚中被侵犯",
-        "place": "alley"
-      },
-      {
-        "file": "mio_sex_alley_vaginal.png",
-        "label": "后巷正常位",
-        "place": "alley"
-      },
-      {
-        "file": "mio_sex_alley_wall.png",
-        "label": "后巷抵墙",
-        "place": "alley"
-      },
-      {
-        "file": "mio_sex_apartment_bed.png",
-        "label": "公寓床上",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_sex_apartment_creampie.png",
-        "label": "体内射精",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_sex_apartment_doggy.png",
-        "label": "公寓后背位",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_sex_metro_standing.png",
-        "label": "地铁站立",
-        "place": "metro"
-      },
-      {
-        "file": "mio_sex_metro_touch.png",
-        "label": "地铁被摸",
-        "place": "metro"
-      },
-      {
-        "file": "mio_sex_pool_oral.png",
-        "label": "泳池口交",
-        "place": "pool"
-      },
-      {
-        "file": "mio_sex_pool_sex.png",
-        "label": "泳池性交",
-        "place": "pool"
-      },
-      {
-        "file": "mio_sex_taxi_finger.png",
-        "label": "出租车手指",
-        "place": "taxi"
-      }
-    ],
-    "map": [
-      {
-        "file": "mio_map_alley_back.png",
-        "label": "后巷",
-        "place": "alley"
-      },
-      {
-        "file": "mio_map_apartment_room.png",
-        "label": "单身公寓",
-        "place": "apartment"
-      },
-      {
-        "file": "mio_map_convstore_inside.png",
-        "label": "便利店",
-        "place": "convstore"
-      },
-      {
-        "file": "mio_map_mall_atrium.png",
-        "label": "商场中庭",
-        "place": "mall"
-      },
-      {
-        "file": "mio_map_metro_car.png",
-        "label": "地铁车厢",
-        "place": "metro"
-      },
-      {
-        "file": "mio_map_park_path.png",
-        "label": "公园步道",
-        "place": "park"
-      },
-      {
-        "file": "mio_map_pool_indoor.png",
-        "label": "室内泳池",
-        "place": "pool"
-      },
-      {
-        "file": "mio_map_rooftop_dusk.png",
-        "label": "公寓天台",
-        "place": "rooftop"
-      },
-      {
-        "file": "mio_map_station_platform.png",
-        "label": "车站月台",
-        "place": "station"
-      },
-      {
-        "file": "mio_map_street_day.png",
-        "label": "白天商业街",
-        "place": "street"
-      },
-      {
-        "file": "mio_map_street_night.png",
-        "label": "夜晚霓虹街",
-        "place": "street"
-      },
-      {
-        "file": "mio_map_taxi_back.png",
-        "label": "出租车后座",
-        "place": "taxi"
-      }
-    ]
-  }
+  "cdn": "https://cdn.jsdelivr.net/gh/WLGH01/ktoucha.github.io@main/img/mio/",
+  "items": [
+    {
+      "cg": "CGty01",
+      "file": "mio_toy_apartment_machine_bed.png",
+      "label": "公寓炮机",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGty02",
+      "file": "mio_toy_convstore_egg_shelf.png",
+      "label": "便利店跳蛋",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGty03",
+      "file": "mio_toy_mall_egg_fitting.png",
+      "label": "试衣间跳蛋",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGty04",
+      "file": "mio_toy_metro_egg_seat.png",
+      "label": "地铁跳蛋",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGty05",
+      "file": "mio_toy_park_egg_bench.png",
+      "label": "公园长椅跳蛋",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGty06",
+      "file": "mio_toy_pool_machine_edge.png",
+      "label": "泳池边炮机",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGty07",
+      "file": "mio_toy_rooftop_machine_stand.png",
+      "label": "天台炮机",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGty08",
+      "file": "mio_toy_station_egg_platform.png",
+      "label": "站台跳蛋",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGty09",
+      "file": "mio_toy_street_egg_walk.png",
+      "label": "街道跳蛋行走",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGty10",
+      "file": "mio_toy_street_egg_wall.png",
+      "label": "街道墙边跳蛋",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGty11",
+      "file": "mio_toy_university_egg_classroom.png",
+      "label": "教室跳蛋",
+      "cat": "toy"
+    },
+    {
+      "cg": "CGgp01",
+      "file": "mio_group_alley_three.png",
+      "label": "后巷三人",
+      "cat": "group"
+    },
+    {
+      "cg": "CGgp02",
+      "file": "mio_group_apartment_double.png",
+      "label": "公寓双人",
+      "cat": "group"
+    },
+    {
+      "cg": "CGgp03",
+      "file": "mio_group_apartment_four.png",
+      "label": "公寓多人",
+      "cat": "group"
+    },
+    {
+      "cg": "CGgp04",
+      "file": "mio_group_metro_crowd.png",
+      "label": "地铁多人",
+      "cat": "group"
+    },
+    {
+      "cg": "CGgp05",
+      "file": "mio_group_pool_poolside.png",
+      "label": "泳池边多人",
+      "cat": "group"
+    },
+    {
+      "cg": "CGgp06",
+      "file": "mio_group_street_night_crowd.png",
+      "label": "夜晚街边多人",
+      "cat": "group"
+    },
+    {
+      "cg": "CGgp07",
+      "file": "mio_group_warehouse_circle.png",
+      "label": "仓库围圈",
+      "cat": "group"
+    },
+    {
+      "cg": "CGso01",
+      "file": "mio_solo_apartment_bathroom.png",
+      "label": "浴室自慰",
+      "cat": "solo"
+    },
+    {
+      "cg": "CGso02",
+      "file": "mio_solo_apartment_bed_spread.png",
+      "label": "床上张腿",
+      "cat": "solo"
+    },
+    {
+      "cg": "CGso03",
+      "file": "mio_solo_apartment_mirror.png",
+      "label": "镜前自摸",
+      "cat": "solo"
+    },
+    {
+      "cg": "CGso04",
+      "file": "mio_solo_pool_water_touch.png",
+      "label": "泳池水中",
+      "cat": "solo"
+    },
+    {
+      "cg": "CGso05",
+      "file": "mio_solo_rooftop_night_touch.png",
+      "label": "天台自摸",
+      "cat": "solo"
+    },
+    {
+      "cg": "CGso06",
+      "file": "mio_solo_station_toilet.png",
+      "label": "车站洗手间",
+      "cat": "solo"
+    },
+    {
+      "cg": "CGso07",
+      "file": "mio_solo_university_clubroom.png",
+      "label": "社团活动室",
+      "cat": "solo"
+    },
+    {
+      "cg": "CGso08",
+      "file": "mio_solo_warehouse_crate.png",
+      "label": "仓库木箱上",
+      "cat": "solo"
+    },
+    {
+      "cg": "CGst01",
+      "file": "mio_state_alley_panic.png",
+      "label": "惊慌",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst02",
+      "file": "mio_state_alley_run.png",
+      "label": "奔跑",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst03",
+      "file": "mio_state_apartment_aroused.png",
+      "label": "兴奋",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst04",
+      "file": "mio_state_apartment_calm.png",
+      "label": "平静",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst05",
+      "file": "mio_state_apartment_casual.png",
+      "label": "便服",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst06",
+      "file": "mio_state_apartment_climax.png",
+      "label": "高潮失神",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst07",
+      "file": "mio_state_apartment_lingerie.png",
+      "label": "内衣",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst08",
+      "file": "mio_state_cafe_smile.png",
+      "label": "微笑",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst09",
+      "file": "mio_state_convstore_crouch.png",
+      "label": "蹲下",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst10",
+      "file": "mio_state_mall_walk.png",
+      "label": "行走",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst11",
+      "file": "mio_state_metro_nervous.png",
+      "label": "紧张",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst12",
+      "file": "mio_state_pool_swimsuit.png",
+      "label": "泳装",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst13",
+      "file": "mio_state_rooftop_defiant.png",
+      "label": "倔强",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst14",
+      "file": "mio_state_room_bound.png",
+      "label": "绳缚",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst15",
+      "file": "mio_state_station_cuffs.png",
+      "label": "手铐",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst16",
+      "file": "mio_state_street_coat.png",
+      "label": "风衣",
+      "cat": "state"
+    },
+    {
+      "cg": "CGst17",
+      "file": "mio_state_street_shy.png",
+      "label": "害羞",
+      "cat": "state"
+    },
+    {
+      "cg": "CGex01",
+      "file": "mio_expose_alley_dogeza.png",
+      "label": "土下座",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex02",
+      "file": "mio_expose_alley_pee_spread.png",
+      "label": "开腿小便",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex03",
+      "file": "mio_expose_apartment_ass_wiggle.png",
+      "label": "扭动屁股",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex04",
+      "file": "mio_expose_apartment_doggy_masturbate.png",
+      "label": "狗爬式自慰",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex05",
+      "file": "mio_expose_apartment_futa.png",
+      "label": "扶他双性",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex06",
+      "file": "mio_expose_apartment_hip_sway.png",
+      "label": "摆动腰部",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex07",
+      "file": "mio_expose_apartment_lying_masturbate.png",
+      "label": "仰卧自慰",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex08",
+      "file": "mio_expose_apartment_wear_coat.png",
+      "label": "穿上外套",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex09",
+      "file": "mio_expose_convstore_three_leg.png",
+      "label": "三足自慰",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex10",
+      "file": "mio_expose_mall_masturbate.png",
+      "label": "自慰",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex11",
+      "file": "mio_expose_metro_ahegao_vv.png",
+      "label": "阿嘿颜双V",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex12",
+      "file": "mio_expose_metro_clitoris.png",
+      "label": "玩弄阴蒂",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex13",
+      "file": "mio_expose_metro_topless.png",
+      "label": "露出上半身",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex14",
+      "file": "mio_expose_park_pee_stand.png",
+      "label": "站立小便",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex15",
+      "file": "mio_expose_park_squat_armpit.png",
+      "label": "露腋蹲姿",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex16",
+      "file": "mio_expose_pool_high_leg.png",
+      "label": "高叉姿势",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex17",
+      "file": "mio_expose_rooftop_i_split.png",
+      "label": "I字劈叉平衡",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex18",
+      "file": "mio_expose_rooftop_nude_full.png",
+      "label": "变成裸体",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex19",
+      "file": "mio_expose_street_cover_chest.png",
+      "label": "手遮胸",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex20",
+      "file": "mio_expose_street_nipple.png",
+      "label": "玩弄乳头",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex21",
+      "file": "mio_expose_street_show_ass.png",
+      "label": "露出屁股",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex22",
+      "file": "mio_expose_street_takeoff_coat.png",
+      "label": "脱掉外套",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGex23",
+      "file": "mio_expose_street_walk_spread.png",
+      "label": "叉腿走路",
+      "cat": "expose"
+    },
+    {
+      "cg": "CGsy01",
+      "file": "mio_story_alley_struggle.png",
+      "label": "挣扎逃脱",
+      "cat": "story"
+    },
+    {
+      "cg": "CGsy02",
+      "file": "mio_story_apartment_goal.png",
+      "label": "粉丝达标",
+      "cat": "story"
+    },
+    {
+      "cg": "CGsy03",
+      "file": "mio_story_apartment_phone.png",
+      "label": "获得手机",
+      "cat": "story"
+    },
+    {
+      "cg": "CGsy04",
+      "file": "mio_story_metro_event.png",
+      "label": "地铁事件",
+      "cat": "story"
+    },
+    {
+      "cg": "CGsy05",
+      "file": "mio_story_room_bound.png",
+      "label": "被束缚",
+      "cat": "story"
+    },
+    {
+      "cg": "CGsy06",
+      "file": "mio_story_station_travel.png",
+      "label": "解锁旅行",
+      "cat": "story"
+    },
+    {
+      "cg": "CGsy07",
+      "file": "mio_story_street_firstlive.png",
+      "label": "首次直播",
+      "cat": "story"
+    },
+    {
+      "cg": "CGsy08",
+      "file": "mio_story_taxi_event.png",
+      "label": "出租车事件",
+      "cat": "story"
+    },
+    {
+      "cg": "CGsc01",
+      "file": "mio_scene_apartment_morning.png",
+      "label": "公寓清晨",
+      "cat": "scene"
+    },
+    {
+      "cg": "CGsc02",
+      "file": "mio_scene_convstore_front.png",
+      "label": "便利店门口",
+      "cat": "scene"
+    },
+    {
+      "cg": "CGsc03",
+      "file": "mio_scene_mall_walk.png",
+      "label": "商场中庭",
+      "cat": "scene"
+    },
+    {
+      "cg": "CGsc04",
+      "file": "mio_scene_metro_seat.png",
+      "label": "地铁座位",
+      "cat": "scene"
+    },
+    {
+      "cg": "CGsc05",
+      "file": "mio_scene_park_bench.png",
+      "label": "公园长椅",
+      "cat": "scene"
+    },
+    {
+      "cg": "CGsc06",
+      "file": "mio_scene_pool_edge.png",
+      "label": "泳池边",
+      "cat": "scene"
+    },
+    {
+      "cg": "CGsc07",
+      "file": "mio_scene_rooftop_night.png",
+      "label": "夜晚天台",
+      "cat": "scene"
+    },
+    {
+      "cg": "CGsc08",
+      "file": "mio_scene_station_wait.png",
+      "label": "月台等车",
+      "cat": "scene"
+    },
+    {
+      "cg": "CGsc09",
+      "file": "mio_scene_taxi_ride.png",
+      "label": "出租车后座",
+      "cat": "scene"
+    },
+    {
+      "cg": "CGsx01",
+      "file": "mio_sex_alley_bound.png",
+      "label": "绳缚中被侵犯",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGsx02",
+      "file": "mio_sex_alley_vaginal.png",
+      "label": "后巷正常位",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGsx03",
+      "file": "mio_sex_alley_wall.png",
+      "label": "后巷抵墙",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGsx04",
+      "file": "mio_sex_apartment_bed.png",
+      "label": "公寓床上",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGsx05",
+      "file": "mio_sex_apartment_creampie.png",
+      "label": "体内射精",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGsx06",
+      "file": "mio_sex_apartment_doggy.png",
+      "label": "公寓后背位",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGsx07",
+      "file": "mio_sex_metro_standing.png",
+      "label": "地铁站立",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGsx08",
+      "file": "mio_sex_metro_touch.png",
+      "label": "地铁被摸",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGsx09",
+      "file": "mio_sex_pool_oral.png",
+      "label": "泳池口交",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGsx10",
+      "file": "mio_sex_pool_sex.png",
+      "label": "泳池性交",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGsx11",
+      "file": "mio_sex_taxi_finger.png",
+      "label": "出租车手指",
+      "cat": "sex"
+    },
+    {
+      "cg": "CGmp01",
+      "file": "mio_map_alley_back.png",
+      "label": "后巷",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp02",
+      "file": "mio_map_apartment_room.png",
+      "label": "单身公寓",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp03",
+      "file": "mio_map_convstore_inside.png",
+      "label": "便利店",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp04",
+      "file": "mio_map_mall_atrium.png",
+      "label": "商场中庭",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp05",
+      "file": "mio_map_metro_car.png",
+      "label": "地铁车厢",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp06",
+      "file": "mio_map_park_path.png",
+      "label": "公园步道",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp07",
+      "file": "mio_map_pool_indoor.png",
+      "label": "室内泳池",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp08",
+      "file": "mio_map_rooftop_dusk.png",
+      "label": "公寓天台",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp09",
+      "file": "mio_map_station_platform.png",
+      "label": "车站月台",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp10",
+      "file": "mio_map_street_day.png",
+      "label": "白天商业街",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp11",
+      "file": "mio_map_street_night.png",
+      "label": "夜晚霓虹街",
+      "cat": "map"
+    },
+    {
+      "cg": "CGmp12",
+      "file": "mio_map_taxi_back.png",
+      "label": "出租车后座",
+      "cat": "map"
+    }
+  ]
 }
